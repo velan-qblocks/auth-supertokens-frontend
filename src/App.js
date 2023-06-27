@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
+import * as reactRouterDom from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { getSuperTokensRoutesForReactRouterDom } from 'supertokens-auth-react/ui';
+import { ThirdPartyPasswordlessPreBuiltUI } from 'supertokens-auth-react/recipe/thirdpartypasswordless/prebuiltui';
+
+import Home from './pages/Home';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   return (
+      <>
+         <Routes>
+            {getSuperTokensRoutesForReactRouterDom(reactRouterDom, [ThirdPartyPasswordlessPreBuiltUI])}
+               <Route path="/" element={<Home />}></Route>
+         </Routes>
+      </>
+   );
 }
 
 export default App;
+
